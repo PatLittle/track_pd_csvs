@@ -8,7 +8,7 @@ def fetch_and_save_as_parquet(api_url, resource_id, output_dir):
     Fetches a CKAN datastore table dump by resource ID, converts it to Parquet, and saves it.
 
     Args:
-        api_url (str): CKAN base API URL (e.g., "https://open.canada.ca/data/api/3/action/datastore_dump")
+        api_url (str): CKAN base API URL (e.g., "https://open.canada.ca/data/datastore/dump/")
         resource_id (str): The CKAN datastore resource ID.
         output_dir (str): Directory to save the Parquet file.
 
@@ -17,7 +17,7 @@ def fetch_and_save_as_parquet(api_url, resource_id, output_dir):
     """
     try:
         # Construct the datastore dump URL
-        dump_url = f"{api_url}?resource_id={resource_id}"
+        dump_url = f"{api_url}{resource_id}"
 
         # Make the request to download the dump
         response = requests.get(dump_url, stream=True)
@@ -54,7 +54,7 @@ def fetch_and_save_as_parquet(api_url, resource_id, output_dir):
 # Main script
 if __name__ == "__main__":
     # CKAN API base URL
-    API_URL = "https://open.canada.ca/data/api/3/action/datastore_dump"
+    API_URL = "https://open.canada.ca/data/datastore/dump/"
 
     # Path to the file containing resource IDs
     resource_ids_file = "published_resource_ids.txt"
