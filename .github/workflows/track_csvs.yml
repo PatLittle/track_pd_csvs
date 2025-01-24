@@ -18,10 +18,16 @@ jobs:
           pip install requests beautifulsoup4 ckanapi markdownify pandas fastparquet
   
       - name: check yaml files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python check_yaml_files.py https://github.com/open-data/ckanext-canada/tree/master/ckanext/canada/tables
+          git status
+        continue-on-error: true
 
       - name: get tables parquet
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python fetch_ckan_2_parquet.py
          
@@ -30,3 +36,4 @@ jobs:
           git add --all
           git commit -m "generated"
           git push
+        continue-on-error: true
