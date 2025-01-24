@@ -19,7 +19,7 @@ jobs:
   
       - name: check yaml files
         run: |
-          python check_yaml_files.py https://raw.githubusercontent.com/open-data/ckanext-canada/master/ckanext/canada/tables/
+          python check_yaml_files.py https://github.com/open-data/ckanext-canada/tree/master/ckanext/canada/tables
 
       - name: get tables parquet
         run: |
