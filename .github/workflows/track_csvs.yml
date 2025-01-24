@@ -11,6 +11,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           echo $PWD
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 ckanapi markdownify
   
       - name: check yaml files
         run: |
