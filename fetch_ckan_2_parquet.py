@@ -35,7 +35,7 @@ def fetch_and_save_as_parquet(api_url, resource_id, output_dir):
         parquet_file = os.path.join(output_dir, f"{resource_id}.parquet")
 
         # Save the DataFrame as Parquet with compression
-        df.to_parquet(parquet_file, index=False, compression="snappy")
+        df.to_parquet(parquet_file, index=False, compression=None)
         print(f"Saved Parquet file: {parquet_file}")
 
         return parquet_file
